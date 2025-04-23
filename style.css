@@ -1,0 +1,268 @@
+/* Reset and basic setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #00f2ff, #2e2a72, #9b0096); /* Futuristic cool tones */
+  background-size: 400% 400%;
+  animation: backgroundAnimation 15s ease infinite;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  flex-direction: column;
+}
+
+/* Background animation to shift between cool colors */
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(135deg, #00f2ff, #2e2a72, #9b0096);
+  }
+  50% {
+    background: linear-gradient(135deg, #2a5298, #1e3c72, #9b0096);
+  }
+  100% {
+    background: linear-gradient(135deg, #00f2ff, #2e2a72, #9b0096);
+  }
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Textarea and button styling */
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 12px;
+  font-size: 16px;
+  resize: none;
+  border: none;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  margin-bottom: 20px;
+  outline: none;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+button {
+  background: #ffffff;
+  color: #00f2ff;
+  font-weight: bold;
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+/* Canvas for the wheel */
+canvas {
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-top: 20px;
+  background: radial-gradient(circle, #550000 60%, #330000 100%);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Winner Display */
+#winnerDisplay {
+  margin-top: 25px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 5px #fff;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo styling */
+.logo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #00f2ff; /* Glowing border */
+  box-shadow: 0 0 15px #00f2ff, 0 0 30px #00f2ff66;
+  margin-bottom: 20px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  animation: glowPulse 3s ease-in-out infinite;
+  background-color: #ffffff10;
+}
+
+/* Hover effect for interactivity */
+.logo:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffe766;
+}
+
+/* Subtle glowing pulse */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px #00f2ff, 0 0 30px #00f2ff66;
+  }
+  50% {
+    box-shadow: 0 0 25px #00ffe7, 0 0 45px #00ffe766;
+  }
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-25deg);
+  animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  50% {
+    left: 125%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+/* Particles.js container */
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Winner Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1e1e2f;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  color: #00ffe7;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: popIn 0.5s ease-out;
+}
+
+.modal-content h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  background-color: #00f2ff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #00c6d7;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Winner List Styling */
+.winner-list {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  z-index: 2;
+  max-width: 200px;
+}
+
+.winner-list h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #00ffe7;
+  text-align: center;
+}
+
+.winner-list ol {
+  list-style: decimal inside;
+  padding-left: 0;
+  font-size: 16px;
+}
+
+.winner-list

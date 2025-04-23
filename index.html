@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucky Draw Wheel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Particle JS Container (background effect) -->
+  <div id="particles-js"></div>
+
+  <div class="container">
+    <h1>🎡 Moira Lucky Draw</h1>
+
+    <!-- Merchantrade Logo -->
+    <img src="moira2.jpg" alt="Merchantrade Logo" class="logo" width="120" height="120">
+
+    <!-- Input field for names -->
+    <textarea id="namesInput" placeholder="Enter names, one per line..."></textarea>
+    
+    <!-- Button to start the wheel spin -->
+    <button type="button" onclick="startWheel()">Spin the Wheel!</button>
+
+    <!-- The Wheel Canvas -->
+    <div class="wheel-container">
+      <canvas id="wheel" width="500" height="500"></canvas>
+    </div>
+
+    <!-- Display Winner -->
+    <div id="winnerDisplay"></div>
+  </div>
+
+  <!-- Winner Modal -->
+<div id="winnerModal" class="modal">
+  <div class="modal-content">
+    <h2>🎉 Winner! 🎉</h2>
+    <p id="winnerName"></p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- Winner Modal Audio -->
+<audio id="winnerSound" src="winnersong.mp3" preload="auto"></audio>
+
+
+  <!-- Winner List -->
+  <div class="winner-list">
+    <h3>🏆 Winner List</h3>
+    <ol id="winnerListDisplay"></ol>
+  </div>
+
+  <!-- Sound for Wheel Spin -->
+  <audio id="spinSound" src="spinningsong.mp3" preload="auto"></audio>
+
+  <!-- Confetti Effect -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <!-- Particles.js for Background Effect -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
